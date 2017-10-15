@@ -46,6 +46,8 @@
 		69E73BCD1B6A857A00AA4D52 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E73BCC1B6A857A00AA4D52 /* WebKit.framework */; };
 		69E73BD01B6A887200AA4D52 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69E73BCE1B6A887200AA4D52 /* MainMenu.xib */; };
 		69E73BD21B6B03D700AA4D52 /* wannianli.icns in Resources */ = {isa = PBXBuildFile; fileRef = 69E73BD11B6B03D700AA4D52 /* wannianli.icns */; };
+		B31E4FB61F93C6060001BCCD /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = B31E4FB41F93C6060001BCCD /* fonts */; };
+		B31E4FB71F93C6060001BCCD /* css in Resources */ = {isa = PBXBuildFile; fileRef = B31E4FB51F93C6060001BCCD /* css */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,8 @@
 		69E73BCC1B6A857A00AA4D52 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		69E73BCF1B6A887200AA4D52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		69E73BD11B6B03D700AA4D52 /* wannianli.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = wannianli.icns; sourceTree = "<group>"; };
+		B31E4FB41F93C6060001BCCD /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		B31E4FB51F93C6060001BCCD /* css */ = {isa = PBXFileReference; lastKnownFileType = folder; path = css; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +268,8 @@
 		69E73BA41B6A82CC00AA4D52 /* vendors */ = {
 			isa = PBXGroup;
 			children = (
+				B31E4FB51F93C6060001BCCD /* css */,
+				B31E4FB41F93C6060001BCCD /* fonts */,
 				69E73BA51B6A82CC00AA4D52 /* calendar.htm */,
 				69E73BA61B6A82CC00AA4D52 /* calendar.js */,
 				69E73BA71B6A82CC00AA4D52 /* festivals.js */,
@@ -370,9 +376,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B31E4FB71F93C6060001BCCD /* css in Resources */,
 				69E73BBA1B6A82CC00AA4D52 /* holidays.js in Resources */,
 				69E73BBD1B6A82CC00AA4D52 /* style.css in Resources */,
 				69E73BB41B6A82CC00AA4D52 /* calendar.js in Resources */,
+				B31E4FB61F93C6060001BCCD /* fonts in Resources */,
 				69B0F6161B69EF7A00A75D21 /* Images.xcassets in Resources */,
 				69E73BBE1B6A82CC00AA4D52 /* VERSION in Resources */,
 				69E73BB31B6A82CC00AA4D52 /* calendar.htm in Resources */,

@@ -49,14 +49,16 @@
     0x05aa0,0x076a3,0x096d0,0x04bd7,0x04ad0,0x0a4d0,0x1d0b6,0x0d250,0x0d520,0x0dd45,
     0x0b5a0,0x056d0,0x055b2,0x049b0,0x0a577,0x0a4b0,0x0aa50,0x1b255,0x06d20,0x0ada0);
 
-    var TIANGAN = "甲乙丙丁戊己庚辛壬癸";
+    // var TIANGAN = "甲乙丙丁戊己庚辛壬癸";
+    var TIANGAN = ["Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý"];
     var DIZHI = "子丑寅卯辰巳午未申酉戌亥";
     var SHENGXIAO = "鼠牛虎兔龙蛇马羊猴鸡狗猪";
-    var JIEQI = ["小寒", "大寒", "立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至", "小暑", "大暑", "立秋", "处暑", "白露", "秋分", "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"];
+    // var JIEQI = ["小寒", "大寒", "立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至", "小暑", "大暑", "立秋", "处暑", "白露", "秋分", "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"];
+    var JIEQI = ["Tiểu hàn", "Đại hàn", "Lập xuân", "Vũ thủy", "Kinh trập", "Xuân phân", "Thanh minh", "Cốc vũ", "Lập hạ", "Tiểu mãn", "Mang chủng", "Hạ chí", "Tiểu thử", "Đại thử", "Lập thu", "Xử thử", "Bạch lộ", "Thu phân", "Hàn lộ", "Sương giáng", "Lập đông", "Tiểu tuyết", "Đại tuyết", "Đông chí"];
     var solarTermInfo = [0,21208,42467,63836,85337,107014,128867,150921,173149,195551,218072,240693,263343,285989,308563,331033,353350,375494,397447,419210,440795,462224,483532,504758];
-    var WEEKDAY = "日一二三四五六七八九十";
-    var LUNARMONTH = ["正", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "腊"];
-    var LUNARDAY = "初十廿卅";
+    var WEEKDAY = "C123456789M";
+    var LUNARMONTH = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+    var LUNARDAY = "0123";
 
     // SOLARFESTIVAL, LUNARFESTIVAL, OTHERFESTIVAL 在festivals.js中定义
     // HOLIDAYADJUSTMENT在holidays.js中定义
@@ -97,7 +99,8 @@
         }
 
         function a(h) {
-            return (TIANGAN.charAt(h % 10) + DIZHI.charAt(h % 12))
+            // return (TIANGAN.charAt(h % 10) + DIZHI.charAt(h % 12))
+            return (TIANGAN[h] + DIZHI.charAt(h % 12))
         }
 
         // 算出农历
@@ -210,13 +213,16 @@
             var j;
             switch (i, h) {
                 case 10:
-                    j = "初十";
+                    //j = "初十";
+                     j = "10";
                     break;
                 case 20:
-                    j = "二十";
+                    //j = "二十";
+                     j = "20";
                     break;
                 case 30:
-                    j = "三十";
+                    //j = "三十";
+                     j = "30";
                     break;
                 default:
                     j = LUNARDAY.charAt(Math.floor(h / 10));
@@ -357,7 +363,8 @@
             // 没有任何一个节日或者节气, 显示农历日期
             // 农历日期的显示，如果是月初第一天，则显示月份
             if (this.lunarDate == 1) {
-                this.showInLunar = this.lunarMonthInChinese + "月"
+                // this.showInLunar = this.lunarMonthInChinese + "月"
+                this.showInLunar = "0" + this.lunarDate + "/" + (this.lunarMonthInChinese.length == 1 ? "0" + this.lunarMonthInChinese : this.lunarMonthInChinese);
             } else {
                 this.showInLunar = this.lunarDateInChinese;
             }
@@ -462,6 +469,8 @@
             MonthTable.draw();
             // i = new Calendar(new Date(j, 3, 1));
             // var h = new Calendar(new Date())
+
+            document.getElementById("month-name").innerHTML = "Thg " + i.solarMonth + "<small>" + i.solarYear + "</small>";
         }
 
         function Z() { // 点击今日
@@ -544,6 +553,14 @@
             n.onclick = function() {
                 setMonths(parseInt(X.value) + 1)
             } // +1 month
+
+            document.getElementById("btn-prev-month").onclick = function() {
+                setMonths(parseInt(X.value) - 1)
+            }; // -1 month
+             document.getElementById("btn-next-month").onclick = function() {
+                setMonths(parseInt(X.value) + 1)
+            } // +1 month
+
         }
         return {
             init: function(g) {
@@ -567,11 +584,18 @@
                 $("cm").removeChild($("cm").childNodes[_i])
             }
             var e = $("cm").insertRow(-1);
-            var g = "日一二三四五六";
+            var g = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
             for (_w = 0; _w < g.length; _w++) {
                 TD = e.insertCell(-1);
-                TD.innerHTML = g.charAt(_w);
-                TD.className = (_w < 1 || _w > 5) ? "fred th" : "th"
+                TD.innerHTML = g[_w];
+                if(_w < 1) {
+                    TD.className = "fred th";
+                } else if (_w > 5) {
+                    TD.className = "green th";
+                } else {
+                    TD.className = "th";
+                }
+                //TD.className = (_w < 1 || _w > 5) ? "fred th" : "th"
             }
             for (var a = 0; a < c.length; a += 7) {
                 var X = $("cm").insertRow(-1);
@@ -584,6 +608,8 @@
                     // 确定日期格的颜色，有两个颜色：数字日期的颜色，节日信息的颜色
                     var h = '', _classIsRest = '';
 
+
+
                     // 首先确定农历字体的颜色
                     if (c[j].lunarFestival != "" || c[j].adjusted == "+") {
                         // 如果有农历节日或者是调休的假期，则显示红色
@@ -593,9 +619,20 @@
                         _classIsRest = 'class="fblue"';
                     }
 
+                    // Change solar day to green on Saturday
+                    
+                    if (j % 7 > 5) {
+                        h = 'class="green"';
+                    }
+
                     // 再确定数字日期的颜色
+                    // if (c[j].adjusted == "+" ||
+                    //     ((j % 7 > 5 || j % 7 < 1) && c[j].adjusted != "-")) {
+                    //     // 调休，或者周末但是不调休，为红色
+                    //     h = 'class="fred"';
+                    // }
                     if (c[j].adjusted == "+" ||
-                        ((j % 7 > 5 || j % 7 < 1) && c[j].adjusted != "-")) {
+                        ((j % 7 < 1) && c[j].adjusted != "-")) {
                         // 调休，或者周末但是不调休，为红色
                         h = 'class="fred"';
                     }
@@ -608,6 +645,15 @@
                             cell: null
                         }, null, true)
                     }
+
+                    //show moonphase
+                    var eventIcon = "";
+                    if (c[j].showInLunar.startsWith("01")) {
+                        eventIcon = "<i class='mdi mdi-checkbox-blank-circle-outline'></i>";
+                    } else if (c[j].showInLunar == "15") {
+                        eventIcon = "<i class='mdi mdi-checkbox-blank-circle'></i>";
+                    }
+
                     _a = $c("A");
                     _a.setAttribute("date", c[j].solarDate);
                     _a.setAttribute("seq", j);
@@ -626,7 +672,7 @@
                         };
                     }
                     _a.href = "javascript:void(0)";
-                    _a.innerHTML = "<span><font " + h + ">" + c[j].solarDate + "</font></span><font " + _classIsRest + ">" + c[j].showInLunar + "</font>";
+                    _a.innerHTML = "<font class='icon'>" + eventIcon + "</font><span><font " + h + ">" + c[j].solarDate + "</font></span><font " + _classIsRest + ">" + c[j].showInLunar + "</font>";
                     _a.className = c[j].isSel ? "active" : ((c[j].isToday && selDay == 0) ? "active" : "");
                     if(!c[j].isCurrentMonth){
                         // for dates not in current month, gray them
@@ -645,7 +691,8 @@
                             }
                         })(j);
                         b.onmouseout = function() {
-                            F.hide()
+                            F.hide();
+                            // document.getElementById("day-detail").innerHTML = "";
                         }
                     }
                 }
@@ -713,16 +760,36 @@
         function selectedDayInfo(b, e, d) {
             var a = MonthData.getJson().dateArray[b.dateIndex];
             var Z = b.cell;
-            var c = "#{solarYear}年#{solarMonth}月#{solarDate}日<br />#{solarWeekDayInChinese}";
+            
+            
+            // var c = "#{solarYear}年#{solarMonth}月#{solarDate}日<br />#{solarWeekDayInChinese}";
+            // c += "<br><b>#{lunarMonthInChinese}月#{lunarDateInChinese}</b>";
+            // c += "<br>#{ganzhiYear}年 #{ganzhiMonth}月 #{ganzhiDate}日";
+            // var lunar_day_info = "#{ganzhiYear}年[#{shengxiao}] #{lunarMonthInChinese}月#{lunarDateInChinese}"
+            // var day_info = "#{solarYear}年#{solarMonth}月#{solarDate}日"
+            // var s = "#{lunarMonthInChinese}月#{lunarDateInChinese}日";
+            // s += " #{ganzhiYear}年 #{ganzhiMonth}月 #{ganzhiDate}日";
+            // if (a.specialEvent != "" || a.solarFestival != "" || a.lunarFestival != "" || a.jieqi != "") {
+            //     c += "<br><b>#{specialEvent} #{lunarFestival} #{solarFestival} #{jieqi}</b>"
+            // }
+
+            var c = "#{solarWeekDay}<br/>#{solarDate}/#{solarMonth}/#{solarYear}";
+
             c += "<br><b>#{lunarMonthInChinese}月#{lunarDateInChinese}</b>";
             c += "<br>#{ganzhiYear}年 #{ganzhiMonth}月 #{ganzhiDate}日";
             var lunar_day_info = "#{ganzhiYear}年[#{shengxiao}] #{lunarMonthInChinese}月#{lunarDateInChinese}"
             var day_info = "#{solarYear}年#{solarMonth}月#{solarDate}日"
+            
             var s = "#{lunarMonthInChinese}月#{lunarDateInChinese}日";
             s += " #{ganzhiYear}年 #{ganzhiMonth}月 #{ganzhiDate}日";
+
+            var c = "Ngày #{solarDate}/#{solarMonth}/#{solarYear}";
+            c += " - Nhằm ngày #{lunarDate}/#{lunarMonth}/#{lunarYear} A.L.";
+
             if (a.specialEvent != "" || a.solarFestival != "" || a.lunarFestival != "" || a.jieqi != "") {
                 c += "<br><b>#{specialEvent} #{lunarFestival} #{solarFestival} #{jieqi}</b>"
             }
+
             if (d) {
                 // 日历标题栏的当日信息
                 // if (typeof(his_2345) != "undefined") {
@@ -735,25 +802,28 @@
                 date_info.innerHTML = Y(day_info, a);
             } else {
                 // 按下日历格时弹出的信息
-                C.innerHTML = Y(c, a);
-                _event = e || event;
+                // C.innerHTML = Y(c, a);
+                // console.log(a);
+                // _event = e || event;
                 // change div position, so it can be shown within the calendar's rect
                 // calendar's rect: 430 * 360
-                if (_event.clientY > 200) {
-                    C.style.top = (_event.clientY - 150) + "px";
-                } else {
-                    C.style.top = (_event.clientY + 35) + "px";
-                };
-                if (_event.clientX > 300) {
-                    C.style.left = (_event.clientX - 120) + "px";
-                } else {
-                    C.style.left = (_event.clientX) + "px";
-                };
-                C.style.width = "120px";
-                C.style.textAlign = "center";
-                C.style.height = "auto";
-                C.style.padding = "5px";
-                C.style.display = "block"
+                // if (_event.clientY > 226) {
+                //     C.style.top = (_event.clientY - 100) + "px";
+                // } else {
+                //     C.style.top = (_event.clientY + 20) + "px";
+                // };
+                // if (_event.clientX > 178) {
+                //     C.style.left = (_event.clientX - 120) + "px";
+                // } else {
+                //     C.style.left = (_event.clientX) + "px";
+                // };
+                // C.style.width = "150px";
+                // C.style.textAlign = "left";
+                // C.style.height = "auto";
+                // C.style.padding = "5px";
+                // C.style.display = "block";
+
+                document.getElementById("day-detail").innerHTML = Y(c, a);
             }
         }
 

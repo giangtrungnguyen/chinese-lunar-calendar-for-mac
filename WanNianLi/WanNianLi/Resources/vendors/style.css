@@ -5,7 +5,7 @@
 * @Last Modified time: 2014-10-08 18:08:58
 */
 
-*{margin:0;padding:0;font-family:"STXihei", "STHeiti", "STSong";}
+*{margin:0;padding:0;font-family:"Helvetica", sanns-serif;}
 p,span,b,input{margin:0;padding:0}
 body{background:#eff8ff;font-size:12px}
 a{color:#155788;text-decoration:none}
@@ -61,3 +61,278 @@ p.jr{margin:0;padding:10px 0;text-align:center}
 .xzys h1{ text-align:center;font-size:16px;color:#036ebe;line-height:30px}
 .xzys b{line-height:25px;color:red}
 .xzys p{line-height:25px}
+
+
+.mdi::before {
+    font-size: 24px;
+    line-height: 14px;
+}
+.btn .mdi::before {
+    position: relative;
+    top: 4px;
+}
+.btn-xs .mdi::before {
+    font-size: 18px;
+    top: 3px;
+}
+.btn-sm .mdi::before {
+    font-size: 18px;
+    top: 3px;
+}
+.dropdown-menu .mdi {
+    width: 18px;
+}
+.dropdown-menu .mdi::before {
+    position: relative;
+    top: 4px;
+    left: -8px;
+}
+.nav .mdi::before {
+    position: relative;
+    top: 4px;
+}
+.navbar .navbar-toggle .mdi::before {
+    position: relative;
+    top: 4px;
+    color: #FFF;
+}
+.breadcrumb .mdi::before {
+    position: relative;
+    top: 4px;
+}
+.breadcrumb a:hover {
+    text-decoration: none;
+}
+.breadcrumb a:hover span {
+    text-decoration: underline;
+}
+.alert .mdi::before {
+    position: relative;
+    top: 4px;
+    margin-right: 2px;
+}
+.input-group-addon .mdi::before {
+    position: relative;
+    top: 3px;
+}
+.navbar-brand .mdi::before {
+    position: relative;
+    top: 2px;
+    margin-right: 2px;
+}
+.list-group-item .mdi::before {
+    position: relative;
+    top: 3px;
+    left: -3px
+}
+
+.calendar-header, .calendar-header * {
+    box-sizing: border-box;
+}
+
+.calendar-header {
+    width: 336px;
+    margin-bottom: 24px;
+}
+
+.calendar-header:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.calendar-header > * {
+    float: left;
+}
+.calendar-header > .col-btn {
+    height: 48px;
+    width: 48px;
+    padding: 2px;  
+}
+.calendar-header > .col-btn > .btn-prev-month,
+.calendar-header > .col-btn > .btn-next-month {
+    height: 44px;
+    width: 44px;
+    font-size: 36px;
+    text-align: center;
+    border: none;
+    background: none;
+    // background-color: red;
+    color: #7F7F7F;
+    border-radius: 22px;
+
+}
+
+.calendar-header > .col-btn > .btn-prev-month:hover,
+.calendar-header > .col-btn > .btn-next-month:hover,
+.calendar-header > .col-btn > .btn-prev-month:active,
+.calendar-header > .col-btn > .btn-next-month:active,
+.calendar-header > .col-btn > .btn-prev-month:focus,
+.calendar-header > .col-btn > .btn-next-month:focus {
+    background-color: #D7D7D7;
+    color: #2B2B2B;
+}
+
+.calendar-header > .month-name {
+    height: 48px;
+    width: 240px;
+    padding-top: 5px;
+    font-size: 36px;
+    line-height: 48px;
+    text-align: center;
+    font-family: Clarendon Lt Std;
+    font-weight: 300;
+    color: #2B2B2B;
+}
+
+.calendar-header > .month-name > small {
+    font-size: 14px;
+    line-height: 14px;
+    font-family: Clarendon Lt Std;
+    font-weight: 300;
+    position: relative;
+    top: -24px;
+}
+
+.left {
+    box-sizing: border-box;
+    width: 356px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    border: none;
+}
+
+.ldays {
+    width: auto;
+    border-collapse: collapse;
+}
+
+.ldays, .ldays * {
+    box-sizing: border-box;
+}
+
+.ldays > tbody > tr > td.th {
+    width: 48px;
+    height: 48px;
+    padding: 2px;
+    border: none;
+    font-size: 18px;
+    font-family: Clarendon Lt Std;
+    font-weight: 300;
+    background: none;
+    color: #9D9D9D;
+}
+.ldays > tbody > tr > td.th.fred {
+    color: #FD3C58;
+}
+.ldays > tbody > tr > td.th.green {
+    color: #34B90A;
+}
+
+.ldays > tbody > tr > td {
+    
+    width: 48px;
+    height: 48px;
+    padding: 2px;
+    border: none;
+}
+
+.ldays > tbody > tr > td > a {
+    width: 44px;
+    height: 44px;
+    position: relative;
+    border: solid 1px transparent;
+}
+
+.ldays > tbody > tr > td > a:hover {
+    background: none;
+    border-radius: 22px;
+    border-color: #FD3C58;
+}
+
+.ldays > tbody > tr > td > a.active {
+    background-color: #FD3C58;
+    border-radius: 22px;
+    border-color: #FD3C58;
+}
+.ldays > tbody > tr > td > a.active * {
+    color: #fff !important;
+}
+
+.ldays > tbody > tr > td > a > font {
+    font-size: 10px;
+    font-family: Clarendon Lt Std;
+    font-weight: 300;
+    color: #9D9D9D;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 32px;
+    line-height: 10px;
+}
+
+.ldays > tbody > tr > td > a > span > font {
+    font-size: 18px;
+    font-family: Clarendon Lt Std;
+    font-weight: 300;
+    color: #2B2B2B;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 16px;
+    line-height: 18px;
+}
+
+.ldays > tbody > tr > td > a > span > font.green {
+    color: #34B90A;
+}
+
+.ldays > tbody > tr > td > a > span > font.fred {
+    color: #FD3C58;
+}
+
+.ldays > tbody > tr > td > a > font.fred {
+    color: #A71DFE;
+}
+
+.ldays > tbody > tr > td > a > font.icon {
+    top: 5px;
+    color: #A71DFE;
+}
+
+.fred {
+    color: #FD3C58;
+}
+
+.green {
+    color: #34B90A;
+}
+
+#fd {
+    display: none;
+    position: absolute;
+    border: none;
+    background: #A71DFE;
+    padding: 20px;
+    line-height: 15px;
+    width: 150px
+}
+
+hr {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    border: none;
+    border-top: dotted 1px #979797;
+}
+
+#day-detail {
+    line-height: 1.5;
+    height: 56px;
+}
+
+#day-detail b {
+    font-weight: normal;
+    color: #A71DFE;
+}
